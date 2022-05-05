@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SureshgowdModelStoreContainer" CdmEntityContainer="SureshgowdEntities">
+    <EntitySetMapping Name="BusInfoes">
+      <EntityTypeMapping TypeName="SureshgowdModel.BusInfo">
+        <MappingFragment StoreEntitySet="BusInfo">
+          <ScalarProperty Name="BusID" ColumnName="BusID" />
+          <ScalarProperty Name="BoardingPoint" ColumnName="BoardingPoint" />
+          <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="SureshgowdModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+          <ScalarProperty Name="EmpSalary" ColumnName="EmpSalary" />
+          <ScalarProperty Name="EmpOrganisation" ColumnName="EmpOrganisation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FootBallLeagues">
+      <EntityTypeMapping TypeName="SureshgowdModel.FootBallLeague">
+        <MappingFragment StoreEntitySet="FootBallLeague">
+          <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+          <ScalarProperty Name="TeamName1" ColumnName="TeamName1" />
+          <ScalarProperty Name="TeamName2" ColumnName="TeamName2" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="WinningTeam" ColumnName="WinningTeam" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bus_View">
+      <EntityTypeMapping TypeName="SureshgowdModel.Bus_View">
+        <MappingFragment StoreEntitySet="Bus_View">
+          <ScalarProperty Name="BusID" ColumnName="BusID" />
+          <ScalarProperty Name="BoardingPoint" ColumnName="BoardingPoint" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Football" FunctionName="SureshgowdModel.Store.Football">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SureshgowdModel.Football_Result">
+          <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+          <ScalarProperty Name="TeamName1" ColumnName="TeamName1" />
+          <ScalarProperty Name="TeamName2" ColumnName="TeamName2" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="WinningTeam" ColumnName="WinningTeam" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BusInfo" FunctionName="SureshgowdModel.Store.sp_BusInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SureshgowdModel.sp_BusInfo_Result">
+          <ScalarProperty Name="BusID" ColumnName="BusID" />
+          <ScalarProperty Name="BoardingPoint" ColumnName="BoardingPoint" />
+          <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Employee" FunctionName="SureshgowdModel.Store.sp_Employee">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SureshgowdModel.sp_Employee_Result">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+          <ScalarProperty Name="EmpSalary" ColumnName="EmpSalary" />
+          <ScalarProperty Name="EmpOrganisation" ColumnName="EmpOrganisation" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

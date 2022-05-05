@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SureshgowdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BusInfo">
+          <Key>
+            <PropertyRef Name="BusID" />
+          </Key>
+          <Property Name="BusID" Type="int" Nullable="false" />
+          <Property Name="BoardingPoint" Type="varchar" MaxLength="50" />
+          <Property Name="TravelDate" Type="datetime" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Rating" Type="int" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpID" />
+          </Key>
+          <Property Name="EmpID" Type="int" Nullable="false" />
+          <Property Name="EmpName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpSalary" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="EmpOrganisation" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FootBallLeague">
+          <Key>
+            <PropertyRef Name="MatchID" />
+          </Key>
+          <Property Name="MatchID" Type="int" Nullable="false" />
+          <Property Name="TeamName1" Type="varchar" MaxLength="100" />
+          <Property Name="TeamName2" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="varchar" MaxLength="40" />
+          <Property Name="WinningTeam" Type="varchar" MaxLength="50" />
+          <Property Name="Points" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Sureshgowd.dbo.Bus_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Bus_View">
+          <Key>
+            <PropertyRef Name="BusID" />
+          </Key>
+          <Property Name="BusID" Type="int" Nullable="false" />
+          <Property Name="BoardingPoint" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Sureshgowd.dbo.MatchView' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="MatchView">
+          <Property Name="TeamName1" Type="varchar" MaxLength="100" />
+          <Property Name="TeamName2" Type="varchar" MaxLength="100" />
+        </EntityType>-->
+        <Function Name="Football" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_BusInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Employee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="SureshgowdModelStoreContainer">
+          <EntitySet Name="BusInfo" EntityType="Self.BusInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FootBallLeague" EntityType="Self.FootBallLeague" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bus_View" EntityType="Self.Bus_View" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Bus_View].[BusID] AS [BusID], 
+    [Bus_View].[BoardingPoint] AS [BoardingPoint]
+    FROM [dbo].[Bus_View] AS [Bus_View]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SureshgowdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BusInfo">
+          <Key>
+            <PropertyRef Name="BusID" />
+          </Key>
+          <Property Name="BusID" Type="Int32" Nullable="false" />
+          <Property Name="BoardingPoint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TravelDate" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Rating" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpID" />
+          </Key>
+          <Property Name="EmpID" Type="Int32" Nullable="false" />
+          <Property Name="EmpName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpSalary" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EmpOrganisation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FootBallLeague">
+          <Key>
+            <PropertyRef Name="MatchID" />
+          </Key>
+          <Property Name="MatchID" Type="Int32" Nullable="false" />
+          <Property Name="TeamName1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TeamName2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="WinningTeam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Points" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Bus_View">
+          <Key>
+            <PropertyRef Name="BusID" />
+          </Key>
+          <Property Name="BusID" Type="Int32" Nullable="false" />
+          <Property Name="BoardingPoint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="SureshgowdEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BusInfoes" EntityType="Self.BusInfo" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="FootBallLeagues" EntityType="Self.FootBallLeague" />
+          <EntitySet Name="Bus_View" EntityType="Self.Bus_View" />
+          <FunctionImport Name="Football" ReturnType="Collection(SureshgowdModel.Football_Result)" />
+          <FunctionImport Name="sp_BusInfo" ReturnType="Collection(SureshgowdModel.sp_BusInfo_Result)" />
+          <FunctionImport Name="sp_Employee" ReturnType="Collection(SureshgowdModel.sp_Employee_Result)" />
+        </EntityContainer>
+        <ComplexType Name="Football_Result">
+          <Property Type="Int32" Name="MatchID" Nullable="false" />
+          <Property Type="String" Name="TeamName1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TeamName2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="WinningTeam" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Points" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_BusInfo_Result">
+          <Property Type="Int32" Name="BusID" Nullable="false" />
+          <Property Type="String" Name="BoardingPoint" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="TravelDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="Rating" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Employee_Result">
+          <Property Type="Int32" Name="EmpID" Nullable="false" />
+          <Property Type="String" Name="EmpName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="EmpSalary" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="EmpOrganisation" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SureshgowdModelStoreContainer" CdmEntityContainer="SureshgowdEntities">
+          <EntitySetMapping Name="BusInfoes">
+            <EntityTypeMapping TypeName="SureshgowdModel.BusInfo">
+              <MappingFragment StoreEntitySet="BusInfo">
+                <ScalarProperty Name="BusID" ColumnName="BusID" />
+                <ScalarProperty Name="BoardingPoint" ColumnName="BoardingPoint" />
+                <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="SureshgowdModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EmpSalary" ColumnName="EmpSalary" />
+                <ScalarProperty Name="EmpOrganisation" ColumnName="EmpOrganisation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FootBallLeagues">
+            <EntityTypeMapping TypeName="SureshgowdModel.FootBallLeague">
+              <MappingFragment StoreEntitySet="FootBallLeague">
+                <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+                <ScalarProperty Name="TeamName1" ColumnName="TeamName1" />
+                <ScalarProperty Name="TeamName2" ColumnName="TeamName2" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="WinningTeam" ColumnName="WinningTeam" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bus_View">
+            <EntityTypeMapping TypeName="SureshgowdModel.Bus_View">
+              <MappingFragment StoreEntitySet="Bus_View">
+                <ScalarProperty Name="BusID" ColumnName="BusID" />
+                <ScalarProperty Name="BoardingPoint" ColumnName="BoardingPoint" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Football" FunctionName="SureshgowdModel.Store.Football">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SureshgowdModel.Football_Result">
+                <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+                <ScalarProperty Name="TeamName1" ColumnName="TeamName1" />
+                <ScalarProperty Name="TeamName2" ColumnName="TeamName2" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="WinningTeam" ColumnName="WinningTeam" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_BusInfo" FunctionName="SureshgowdModel.Store.sp_BusInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SureshgowdModel.sp_BusInfo_Result">
+                <ScalarProperty Name="BusID" ColumnName="BusID" />
+                <ScalarProperty Name="BoardingPoint" ColumnName="BoardingPoint" />
+                <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Employee" FunctionName="SureshgowdModel.Store.sp_Employee">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SureshgowdModel.sp_Employee_Result">
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EmpSalary" ColumnName="EmpSalary" />
+                <ScalarProperty Name="EmpOrganisation" ColumnName="EmpOrganisation" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

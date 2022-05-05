@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SureshgowdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BusInfo">
+    <Key>
+      <PropertyRef Name="BusID" />
+    </Key>
+    <Property Name="BusID" Type="int" Nullable="false" />
+    <Property Name="BoardingPoint" Type="varchar" MaxLength="50" />
+    <Property Name="TravelDate" Type="datetime" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Rating" Type="int" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="int" Nullable="false" />
+    <Property Name="EmpName" Type="varchar" MaxLength="50" />
+    <Property Name="EmpSalary" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="EmpOrganisation" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FootBallLeague">
+    <Key>
+      <PropertyRef Name="MatchID" />
+    </Key>
+    <Property Name="MatchID" Type="int" Nullable="false" />
+    <Property Name="TeamName1" Type="varchar" MaxLength="100" />
+    <Property Name="TeamName2" Type="varchar" MaxLength="100" />
+    <Property Name="Status" Type="varchar" MaxLength="40" />
+    <Property Name="WinningTeam" Type="varchar" MaxLength="50" />
+    <Property Name="Points" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Sureshgowd.dbo.Bus_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Bus_View">
+    <Key>
+      <PropertyRef Name="BusID" />
+    </Key>
+    <Property Name="BusID" Type="int" Nullable="false" />
+    <Property Name="BoardingPoint" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Sureshgowd.dbo.MatchView' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="MatchView">
+          <Property Name="TeamName1" Type="varchar" MaxLength="100" />
+          <Property Name="TeamName2" Type="varchar" MaxLength="100" />
+        </EntityType>-->
+  <Function Name="Football" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_BusInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Employee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="SureshgowdModelStoreContainer">
+    <EntitySet Name="BusInfo" EntityType="Self.BusInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FootBallLeague" EntityType="Self.FootBallLeague" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bus_View" EntityType="Self.Bus_View" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Bus_View].[BusID] AS [BusID], 
+    [Bus_View].[BoardingPoint] AS [BoardingPoint]
+    FROM [dbo].[Bus_View] AS [Bus_View]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
